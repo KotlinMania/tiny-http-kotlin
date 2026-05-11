@@ -3,12 +3,6 @@ package io.github.kotlinmania.tinyhttp
 
 /** Status code of a request or response. */
 class StatusCode(val value: Int) : Comparable<StatusCode> {
-    constructor(value: Byte) : this(value.toInt() and 0xFFFF)
-    constructor(value: Short) : this(value.toInt() and 0xFFFF)
-    constructor(value: UByte) : this(value.toInt())
-    constructor(value: UShort) : this(value.toInt())
-    constructor(value: UInt) : this(value.toInt() and 0xFFFF)
-
     /**
      * Returns the default reason phrase for this status code.
      * For example the status code 404 corresponds to "Not Found".
