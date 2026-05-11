@@ -82,6 +82,26 @@ class StatusCode(val value: Int) : Comparable<StatusCode> {
     override fun hashCode(): Int = value.hashCode()
 
     override fun toString(): String = "StatusCode($value)"
+
+    companion object {
+        /** Builds a [StatusCode] from a signed 8-bit value (upstream `From<i8> for StatusCode`). */
+        fun fromByte(value: Byte): StatusCode = StatusCode(value.toInt() and 0xFFFF)
+
+        /** Builds a [StatusCode] from an unsigned 8-bit value (upstream `From<u8> for StatusCode`). */
+        fun fromUByte(value: UByte): StatusCode = StatusCode(value.toInt())
+
+        /** Builds a [StatusCode] from a signed 16-bit value (upstream `From<i16> for StatusCode`). */
+        fun fromShort(value: Short): StatusCode = StatusCode(value.toInt() and 0xFFFF)
+
+        /** Builds a [StatusCode] from an unsigned 16-bit value (upstream `From<u16> for StatusCode`). */
+        fun fromUShort(value: UShort): StatusCode = StatusCode(value.toInt())
+
+        /** Builds a [StatusCode] from a signed 32-bit value (upstream `From<i32> for StatusCode`). */
+        fun fromInt(value: Int): StatusCode = StatusCode(value and 0xFFFF)
+
+        /** Builds a [StatusCode] from an unsigned 32-bit value (upstream `From<u32> for StatusCode`). */
+        fun fromUInt(value: UInt): StatusCode = StatusCode(value.toInt() and 0xFFFF)
+    }
 }
 
 /** Represents a HTTP header. */
