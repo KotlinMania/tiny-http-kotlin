@@ -57,10 +57,18 @@ kotlin {
         binaries.framework { baseName = "TinyHttp"; xcf.add(this) }
     }
     iosSimulatorArm64 {
-        binaries.framework { baseName = "TinyHttp"; xcf.add(this) }
+        binaries.framework {
+            baseName = "TinyHttp"
+            isStatic = true
+            xcf.add(this)
+        }
     }
     iosX64 {
-        binaries.framework { baseName = "TinyHttp"; xcf.add(this) }
+        binaries.framework {
+            baseName = "TinyHttp"
+            isStatic = true
+            xcf.add(this)
+        }
     }
 
     tvosArm64 {
