@@ -5,10 +5,10 @@ Based on AST analysis, here are the concrete next steps.
 ## Summary
 
 - **Files Present:** 18/18 (100.0%)
-- **Function parity:** 67/171 matched (target 147) — 39.2%
+- **Function parity:** 60/171 matched (target 134) — 35.1%
 - **Class/type parity:** 33/52 matched (target 73) — 63.5%
-- **Combined symbol parity:** 100/223 matched (target 220) — 44.8%
-- **Average inline-code cosine:** 0.24 (function body across 15 matched files)
+- **Combined symbol parity:** 93/223 matched (target 207) — 41.7%
+- **Average inline-code cosine:** 0.22 (function body across 15 matched files)
 - **Average documentation cosine:** 0.39 (doc text across 15 matched files)
 - **Cheat-zeroed Files:** 4
 - **Critical Issues:** 17 files with <0.60 function similarity
@@ -55,7 +55,7 @@ Every matched file is listed below with function and type symbol parity.
 - **Similarity:** 0.24
 - **Dependents:** 2
 - **Priority Score:** 2030507.6
-- **Functions:** 1/4 matched (target 3)
+- **Functions:** 1/4 matched (target 1)
 - **Missing functions:** `read`, `write`, `flush`
 - **Types:** 1/1 matched
 - **Missing types:** _none_
@@ -74,11 +74,11 @@ Every matched file is listed below with function and type symbol parity.
 ### 5. request
 
 - **Target:** `tinyhttp.Request`
-- **Similarity:** 0.29
+- **Similarity:** 0.08
 - **Dependents:** 1
-- **Priority Score:** 1183007.1
-- **Functions:** 10/26 matched (target 13)
-- **Missing functions:** `read`, `write`, `flush`, `drop`, `from`, `upgrade`, `into_writer`, `extract_writer_impl`, `extract_reader_impl`, `respond_impl`, `ignore_client_closing_errors`, `with_notify_sender`, `fmt`, `must_be_send`, `f`, `bar`
+- **Priority Score:** 1243009.1
+- **Functions:** 4/26 matched (target 7)
+- **Missing functions:** `read`, `write`, `flush`, `drop`, `from`, `secure`, `method`, `headers`, `http_version`, `body_length`, `remote_addr`, `upgrade`, `into_writer`, `extract_writer_impl`, `extract_reader_impl`, `respond_impl`, `ignore_client_closing_errors`, `with_notify_sender`, `fmt`, `must_be_send`, `f`, `bar`
 - **Types:** 2/4 matched (target 5)
 - **Missing types:** `NotifyOnDrop`, `ReadWrite`
 - **Tests:** 0/3 matched
@@ -100,7 +100,7 @@ Every matched file is listed below with function and type symbol parity.
 - **Similarity:** 0.26
 - **Dependents:** 1
 - **Priority Score:** 1020607.4
-- **Functions:** 3/5 matched
+- **Functions:** 3/5 matched (target 4)
 - **Missing functions:** `read`, `drop`
 - **Types:** 1/1 matched (target 2)
 - **Missing types:** _none_
@@ -178,12 +178,24 @@ Every matched file is listed below with function and type symbol parity.
 - **Similarity:** 0.18
 - **Dependents:** 0
 - **Priority Score:** 81308.2
-- **Functions:** 1/6 matched (target 8)
+- **Functions:** 1/6 matched
 - **Missing functions:** `next`, `read`, `write`, `flush`, `drop`
 - **Types:** 4/7 matched (target 5)
 - **Missing types:** `SequentialReaderBuilderInner`, `SequentialReaderInner`, `Item`
 
-### 15. common
+### 15. client
+
+- **Target:** `tinyhttp.Client`
+- **Similarity:** 0.09
+- **Dependents:** 0
+- **Priority Score:** 81109.1
+- **Functions:** 1/8 matched (target 2)
+- **Missing functions:** `secure`, `read_next_line`, `read`, `next`, `parse_http_version`, `parse_request_line`, `test_parse_request_line`
+- **Types:** 2/3 matched (target 7)
+- **Missing types:** `Item`
+- **Tests:** 0/1 matched
+
+### 16. common
 
 - **Target:** `tinyhttp.Common [STUB]`
 - **Similarity:** 0.00
@@ -194,18 +206,6 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 5/6 matched (target 16)
 - **Missing types:** `Err`
 - **Tests:** 4/4 matched
-
-### 16. client
-
-- **Target:** `tinyhttp.Client`
-- **Similarity:** 0.21
-- **Dependents:** 0
-- **Priority Score:** 71107.9
-- **Functions:** 2/8 matched (target 4)
-- **Missing functions:** `read_next_line`, `read`, `next`, `parse_http_version`, `parse_request_line`, `test_parse_request_line`
-- **Types:** 2/3 matched (target 7)
-- **Missing types:** `Item`
-- **Tests:** 0/1 matched
 
 ### 17. test
 
