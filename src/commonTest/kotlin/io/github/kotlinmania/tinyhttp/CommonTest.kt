@@ -1,4 +1,4 @@
-// port-lint: source src/common.rs
+// port-lint: source common.rs
 package io.github.kotlinmania.tinyhttp
 
 import kotlin.test.Test
@@ -17,6 +17,12 @@ class CommonTest {
     }
 
     @Test
+    fun formatsDateCorrectly() {
+        val httpDate = formatHttpDate(420895020L)
+        assertEquals("Wed, 04 May 1983 11:17:00 GMT", httpDate)
+    }
+
+    @Test
     fun testParseHeaderWithDoublecolon() {
         val header = Header.parse("Time: 20: 34").getOrThrow()
 
@@ -24,7 +30,7 @@ class CommonTest {
         assertEquals("20: 34", header.value)
     }
 
-    // This tests reslstance to RUSTSEC-2020-0031: "HTTP Request smuggling
+    // This tests resistance to RUSTSEC-2020-0031: "HTTP Request smuggling
     // through malformed Transfer Encoding headers"
     // (https://rustsec.org/advisories/RUSTSEC-2020-0031.html).
     @Test
