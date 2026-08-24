@@ -1,4 +1,4 @@
-// port-lint: source src/common.rs
+// port-lint: source common.rs
 package io.github.kotlinmania.tinyhttp
 
 /** Status code of a request or response. */
@@ -150,6 +150,8 @@ class Header(
                     .getOrElse { return Result.failure(it) }
             return Result.success(Header(field, v))
         }
+
+        fun fromStr(input: String): Result<Header> = parse(input)
     }
 
     override fun toString(): String = "$field: $value"
@@ -173,6 +175,8 @@ class HeaderField internal constructor(
             }
             return asciiStringFromBytes(s.encodeToByteArray()).map { HeaderField(it) }
         }
+
+        fun fromStr(s: String): Result<HeaderField> = parse(s)
     }
 
     fun asStr(): String = inner
@@ -272,6 +276,8 @@ sealed class Method {
                     }
                 },
             )
+
+        fun fromStr(s: String): Result<Method> = parse(s)
     }
 }
 
@@ -305,4 +311,47 @@ internal fun asciiStringFromBytes(bytes: ByteArray): Result<String> {
         }
     }
     return Result.success(bytes.decodeToString())
+}
+
+/** Formats an epoch timestamp in seconds into IMF-fixdate format (RFC 7231 / RFC 5322). */
+fun formatHttpDate(epochSeconds: Long): String {
+    val days = (epochSeconds / 86400).toInt()
+    val remSec = (epochSeconds % 86400).toInt().let { if (it < 0) it + 86400 else it }
+    val hour = remSec / 3600
+    val minute = (remSec % 3600) / 60
+    val second = remSec % 60
+
+    // Epoch 1970-01-01 was Thursday (day 4)
+    val dayOfWeekNum = ((days + 4) % 7 + 7) % 7
+    val dayNames = arrayOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+    val dayOfWeek = dayNames[dayOfWeekNum]
+
+    // Civil day from epoch days
+    val z = days + 719468
+    val era = (if (z >= 0) z else z - 146096) / 146097
+    val doe = z - era * 146097
+    val yoe = (doe - doe / 1460 + doe / 36524 - doe / 146096) / 365
+    var y = yoe + era * 400
+    val doy = doe - (365 * yoe + yoe / 4 - yoe / 100)
+    val mp = (5 * doy + 2) / 153
+    val d = doy - (153 * mp + 2) / 5 + 1
+    val m = mp + (if (mp < 10) 3 else -9)
+    if (m <= 2) y += 1
+
+    val monthNames = arrayOf("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    val month = monthNames[m]
+
+    val dayStr = d.toString().padStart(2, '0')
+    val yearStr = y.toString().padStart(4, '0')
+    val hourStr = hour.toString().padStart(2, '0')
+    val minStr = minute.toString().padStart(2, '0')
+    val secStr = second.toString().padStart(2, '0')
+
+    return "$dayOfWeek, $dayStr $month $yearStr $hourStr:$minStr:$secStr GMT"
+}
+
+/** Builds a `Date` header with the current or specified timestamp. */
+fun buildDateHeader(epochSeconds: Long = 0L): Header {
+    val dateStr = formatHttpDate(epochSeconds)
+    return Header.fromBytes("Date", dateStr).getOrThrow()
 }
