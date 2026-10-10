@@ -14,13 +14,15 @@ class ServerTest {
         assertFalse(server.isClosed)
         assertEquals("127.0.0.1:8080", server.listeningAddr.toString())
 
-        val req = Request.newRequest(
-            secure = false,
-            method = Method.Get,
-            path = "/health",
-            version = HTTPVersion(1, 1),
-            headers = emptyList(),
-        ).getOrThrow()
+        val req =
+            Request
+                .newRequest(
+                    secure = false,
+                    method = Method.Get,
+                    path = "/health",
+                    version = HTTPVersion(1, 1),
+                    headers = emptyList(),
+                ).getOrThrow()
 
         server.enqueueRequest(req)
         val popped = server.tryRecv()

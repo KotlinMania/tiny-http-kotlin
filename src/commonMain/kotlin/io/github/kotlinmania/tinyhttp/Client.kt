@@ -8,9 +8,18 @@ import io.github.kotlinmania.tinyhttp.util.RefinedTcpStream
  */
 sealed class ReadError : Exception() {
     data object WrongRequestLine : ReadError()
-    data class WrongHeader(val httpVersion: HTTPVersion) : ReadError()
-    data class ExpectationFailed(val httpVersion: HTTPVersion) : ReadError()
-    data class ReadIoError(override val message: String) : ReadError()
+
+    data class WrongHeader(
+        val httpVersion: HTTPVersion,
+    ) : ReadError()
+
+    data class ExpectationFailed(
+        val httpVersion: HTTPVersion,
+    ) : ReadError()
+
+    data class ReadIoError(
+        override val message: String,
+    ) : ReadError()
 }
 
 /**

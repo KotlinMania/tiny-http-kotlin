@@ -631,8 +631,16 @@ val webpackVersion: String =
 
 rootProject.extensions.configure<NodeJsEnvSpec>("kotlinNodeJsSpec") { version.set(nodeVersion) }
 rootProject.extensions.configure<WasmNodeJsEnvSpec>("kotlinWasmNodeJsSpec") { version.set(wasmNodeVersion) }
-rootProject.extensions.configure<YarnRootEnvSpec>("kotlinYarnSpec") { version.set(yarnVersion) }
-rootProject.extensions.configure<WasmYarnRootEnvSpec>("kotlinWasmYarnSpec") { version.set(wasmYarnVersion) }
+rootProject.extensions.configure<YarnRootEnvSpec>("kotlinYarnSpec") {
+    version.set(yarnVersion)
+    yarnLockMismatchReport.set(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport.WARNING)
+    yarnLockAutoReplace.set(true)
+}
+rootProject.extensions.configure<WasmYarnRootEnvSpec>("kotlinWasmYarnSpec") {
+    version.set(wasmYarnVersion)
+    yarnLockMismatchReport.set(org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport.WARNING)
+    yarnLockAutoReplace.set(true)
+}
 
 rootProject.extensions.configure<YarnRootExtension>("kotlinYarn") {
     project.properties
@@ -666,6 +674,47 @@ rootProject.extensions.configure<NodeJsRootExtension>("kotlinNodeJs") {
     versions.mocha.version = providers.gradleProperty("node.mocha.version").getOrElse("12.0.0-beta-10")
     versions.kotlinWebHelpers.version = providers.gradleProperty("node.kotlinWebHelpers.version").getOrElse("3.1.0")
 }
+
+// Make kotlinUpgradeYarnLock and kotlinWasmUpgradeYarnLock dependencies in the build process
+// for KotlinJS and other JavaScript/WASM targets so that yarn.lock is always upgraded automatically.
+val jsTasksNeedingYarnLock =
+    setOf(
+        "compileKotlinJs",
+        "compileTestKotlinJs",
+        "jsProcessResources",
+        "jsTestProcessResources",
+        "jsNodeTest",
+        "jsBrowserTest",
+        "kotlinStoreYarnLock",
+    )
+
+tasks
+    .matching { it.name in jsTasksNeedingYarnLock }
+    .configureEach {
+        dependsOn("kotlinUpgradeYarnLock")
+    }
+
+val wasmTasksNeedingYarnLock =
+    setOf(
+        "compileKotlinWasmJs",
+        "compileTestKotlinWasmJs",
+        "wasmJsProcessResources",
+        "wasmJsTestProcessResources",
+        "wasmJsNodeTest",
+        "wasmJsBrowserTest",
+        "compileKotlinWasmWasi",
+        "compileTestKotlinWasmWasi",
+        "wasmWasiProcessResources",
+        "wasmWasiTestProcessResources",
+        "wasmWasiNodeTest",
+        "kotlinWasmStoreYarnLock",
+    )
+
+tasks
+    .matching { it.name in wasmTasksNeedingYarnLock }
+    .configureEach {
+        dependsOn("kotlinWasmUpgradeYarnLock")
+    }
 
 // ============================================================================
 // Maven Central publishing
@@ -714,6 +763,13 @@ mavenPublishing {
 // Exact test lifecycle task. Without this, ./gradlew test is ambiguous between
 // Android test task names. This runs commonTest through the KMP allTests
 // lifecycle and adds the Android host + Swift Export parity tests.
+tasks.register("test") {
+    group = "verification"
+    description = "Runs the commonTest-backed KMP suite, Android host tests, and Swift Export smoke test."
+    dependsOn("hostTests")
+    dependsOn("swiftExportSmokeTest")
+}
+
 tasks.register("setupAndroidSdk") {
     group = "setup"
     description = "Downloads and configures the project-local Android SDK. (Alias for ensureAndroidSdk)"
@@ -748,7 +804,11 @@ tasks.register("swiftExportSmokeTest") {
 
     doLast {
         val execOperations = serviceOf<ExecOperations>()
-        val swiftTestDirFile = layout.buildDirectory.dir("swift-test").get().asFile
+        val swiftTestDirFile =
+            layout.buildDirectory
+                .dir("swift-test")
+                .get()
+                .asFile
         swiftTestDirFile.deleteRecursively()
         val swiftBuildDir = swiftTestDirFile.absolutePath
         execOperations

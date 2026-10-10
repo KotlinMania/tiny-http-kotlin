@@ -8,12 +8,14 @@ import kotlin.test.assertTrue
 class TestRequestTest {
     @Test
     fun testBuilder() {
-        val request = TestRequest.new()
-            .withMethod(Method.Post)
-            .withPath("/api/widgets")
-            .withBody("42")
-            .withHttps()
-            .withHeader(Header.parse("X-Custom: value").getOrThrow())
+        val request =
+            TestRequest
+                .new()
+                .withMethod(Method.Post)
+                .withPath("/api/widgets")
+                .withBody("42")
+                .withHttps()
+                .withHeader(Header.parse("X-Custom: value").getOrThrow())
 
         assertEquals(Method.Post, request.method)
         assertEquals("/api/widgets", request.path)

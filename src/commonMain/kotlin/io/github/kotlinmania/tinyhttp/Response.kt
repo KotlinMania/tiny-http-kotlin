@@ -7,7 +7,8 @@ package io.github.kotlinmania.tinyhttp
  */
 enum class TransferEncoding {
     Identity,
-    Chunked;
+    Chunked,
+    ;
 
     companion object {
         fun parse(input: String): Result<TransferEncoding> =
