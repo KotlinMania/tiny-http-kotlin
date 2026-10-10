@@ -5,7 +5,10 @@ package io.github.kotlinmania.tinyhttp.util
  * Control items stored in the message queue.
  */
 sealed class Control<out T> {
-    data class Elem<T>(val value: T) : Control<T>()
+    data class Elem<T>(
+        val value: T,
+    ) : Control<T>()
+
     data object Unblock : Control<Nothing>()
 }
 
@@ -45,6 +48,11 @@ class MessagesQueue<T>(
             Control.Unblock -> null
             null -> null
         }
+
+    /**
+     * Tries to pop an element without blocking longer than timeout duration.
+     */
+    fun popTimeout(timeout: kotlin.time.Duration): T? = tryPop()
 
     /**
      * Returns current number of items in the queue.

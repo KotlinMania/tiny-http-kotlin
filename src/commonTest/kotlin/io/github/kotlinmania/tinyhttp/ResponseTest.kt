@@ -43,30 +43,33 @@ class ResponseTest {
 
     @Test
     fun testChooseTransferEncoding() {
-        val identity = chooseTransferEncoding(
-            statusCode = StatusCode(200),
-            requestHeaders = emptyList(),
-            httpVersion = HTTPVersion(1, 1),
-            entityLength = 100L,
-            chunkedThreshold = 1000L,
-        )
+        val identity =
+            chooseTransferEncoding(
+                statusCode = StatusCode(200),
+                requestHeaders = emptyList(),
+                httpVersion = HTTPVersion(1, 1),
+                entityLength = 100L,
+                chunkedThreshold = 1000L,
+            )
         assertEquals(TransferEncoding.Identity, identity)
 
-        val chunked = chooseTransferEncoding(
-            statusCode = StatusCode(200),
-            requestHeaders = emptyList(),
-            httpVersion = HTTPVersion(1, 1),
-            entityLength = 5000L,
-            chunkedThreshold = 1000L,
-        )
+        val chunked =
+            chooseTransferEncoding(
+                statusCode = StatusCode(200),
+                requestHeaders = emptyList(),
+                httpVersion = HTTPVersion(1, 1),
+                entityLength = 5000L,
+                chunkedThreshold = 1000L,
+            )
         assertEquals(TransferEncoding.Chunked, chunked)
 
-        val noContent = chooseTransferEncoding(
-            statusCode = StatusCode(204),
-            requestHeaders = emptyList(),
-            httpVersion = HTTPVersion(1, 1),
-            entityLength = null,
-        )
+        val noContent =
+            chooseTransferEncoding(
+                statusCode = StatusCode(204),
+                requestHeaders = emptyList(),
+                httpVersion = HTTPVersion(1, 1),
+                entityLength = null,
+            )
         assertEquals(TransferEncoding.Identity, noContent)
     }
 }

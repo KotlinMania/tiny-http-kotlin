@@ -6,7 +6,10 @@ package io.github.kotlinmania.tinyhttp
  */
 sealed class RequestCreationError : Exception() {
     data object ExpectationFailed : RequestCreationError()
-    data class CreationIoError(override val message: String) : RequestCreationError()
+
+    data class CreationIoError(
+        override val message: String,
+    ) : RequestCreationError()
 }
 
 /**
@@ -57,11 +60,12 @@ class Request(
             body: ByteArray = ByteArray(0),
         ): Result<Request> {
             val transferEncoding = headers.find { it.field.equiv("Transfer-Encoding") }?.value
-            val contentLength = if (transferEncoding != null) {
-                null
-            } else {
-                headers.find { it.field.equiv("Content-Length") }?.value?.toLongOrNull()
-            }
+            val contentLength =
+                if (transferEncoding != null) {
+                    null
+                } else {
+                    headers.find { it.field.equiv("Content-Length") }?.value?.toLongOrNull()
+                }
 
             val expectHeader = headers.find { it.field.equiv("Expect") }?.value
             if (expectHeader != null && !expectHeader.equals("100-continue", ignoreCase = true)) {
@@ -78,7 +82,7 @@ class Request(
                     remoteAddr = remoteAddr,
                     secure = secure,
                     bodyLength = contentLength ?: body.size.toLong(),
-                )
+                ),
             )
         }
     }

@@ -9,15 +9,17 @@ import kotlin.test.assertTrue
 class RequestTest {
     @Test
     fun testRequestCreation() {
-        val req = Request.newRequest(
-            secure = false,
-            method = Method.Get,
-            path = "/index.html",
-            version = HTTPVersion(1, 1),
-            headers = listOf(Header.fromBytes("Host", "localhost").getOrThrow()),
-            remoteAddr = "127.0.0.1:12345",
-            body = "Hello".encodeToByteArray(),
-        ).getOrThrow()
+        val req =
+            Request
+                .newRequest(
+                    secure = false,
+                    method = Method.Get,
+                    path = "/index.html",
+                    version = HTTPVersion(1, 1),
+                    headers = listOf(Header.fromBytes("Host", "localhost").getOrThrow()),
+                    remoteAddr = "127.0.0.1:12345",
+                    body = "Hello".encodeToByteArray(),
+                ).getOrThrow()
 
         assertFalse(req.secure)
         assertEquals(Method.Get, req.method)
@@ -30,14 +32,15 @@ class RequestTest {
 
     @Test
     fun testExpectationFailed() {
-        val res = Request.newRequest(
-            secure = false,
-            method = Method.Post,
-            path = "/upload",
-            version = HTTPVersion(1, 1),
-            headers = listOf(Header.fromBytes("Expect", "unknown-expectation").getOrThrow()),
-            body = ByteArray(0),
-        )
+        val res =
+            Request.newRequest(
+                secure = false,
+                method = Method.Post,
+                path = "/upload",
+                version = HTTPVersion(1, 1),
+                headers = listOf(Header.fromBytes("Expect", "unknown-expectation").getOrThrow()),
+                body = ByteArray(0),
+            )
 
         assertTrue(res.isFailure)
     }

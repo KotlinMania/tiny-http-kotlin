@@ -5,8 +5,13 @@ package io.github.kotlinmania.tinyhttp.util
  * Underlying stream representation for HTTP connections.
  */
 sealed class Stream {
-    data class Http(val connection: Any) : Stream()
-    data class Https(val secureStream: Any) : Stream()
+    data class Http(
+        val connection: Any,
+    ) : Stream()
+
+    data class Https(
+        val secureStream: Any,
+    ) : Stream()
 
     fun isSecure(): Boolean = this is Https
 }
