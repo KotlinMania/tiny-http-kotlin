@@ -1,7 +1,11 @@
 // port-lint: source lib.rs
 package io.github.kotlinmania.tinyhttp
 
+import io.github.kotlinmania.log.debug
+import io.github.kotlinmania.log.error
+import io.github.kotlinmania.log.formatArgs
 import io.github.kotlinmania.tinyhttp.util.MessagesQueue
+import io.github.kotlinmania.zeroize.Zeroize
 
 /**
  * Configuration of the server for SSL/TLS.
@@ -9,7 +13,11 @@ import io.github.kotlinmania.tinyhttp.util.MessagesQueue
 data class SslConfig(
     val certificate: ByteArray,
     val privateKey: ByteArray,
-) {
+) : Zeroize {
+    override fun zeroize() {
+        privateKey.fill(0)
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is SslConfig) return false
@@ -47,6 +55,7 @@ class Server(
      */
     fun recv(): Result<Request> {
         if (isClosed) {
+            error(formatArgs("Error accepting new client: Server is closed"))
             return Result.failure(IllegalStateException("Server is closed"))
         }
         val req = messages.pop() ?: return Result.failure(IllegalStateException("No requests available"))
@@ -65,6 +74,7 @@ class Server(
      * Closes the server and releases listeners.
      */
     fun unblock() {
+        debug(formatArgs("Terminating accept thread"))
         isClosed = true
         messages.unblock()
     }
@@ -85,6 +95,7 @@ class Server(
         fun http(address: String, port: Int): Result<Server> {
             val config = ServerConfig(addr = ConfigListenAddr.fromSocketAddr(address, port), ssl = null)
             val listenAddr = ListenAddr.Ip(address, port)
+            debug(formatArgs("Server listening on {}", listenAddr))
             return Result.success(Server(config, listenAddr))
         }
 
@@ -94,6 +105,7 @@ class Server(
         fun https(address: String, port: Int, sslConfig: SslConfig): Result<Server> {
             val config = ServerConfig(addr = ConfigListenAddr.fromSocketAddr(address, port), ssl = sslConfig)
             val listenAddr = ListenAddr.Ip(address, port)
+            debug(formatArgs("Server listening on {}", listenAddr))
             return Result.success(Server(config, listenAddr))
         }
     }
