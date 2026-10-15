@@ -1,8 +1,10 @@
+import Testing
 import TinyHttp
 
-@main
+@Suite("TinyHttp Swift Export Tests")
 struct TinyHttpExportTests {
-    static func main() {
-        print("TinyHttp swift module imported cleanly")
+    @Test("HTTP dates round-trip through the Kotlin export")
+    func epochDateUsesHttpFormat() {
+        #expect(formatHttpDate(epochSeconds: 0) == "Thu, 01 Jan 1970 00:00:00 GMT")
     }
 }

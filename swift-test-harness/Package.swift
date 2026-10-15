@@ -8,7 +8,7 @@ let package = Package(
         .package(name: "TinyHttp", path: "../build/SPMPackage/macosArm64/Debug")
     ],
     targets: [
-        .executableTarget(
+        .testTarget(
             name: "SwiftTestHarnessTests",
             dependencies: [
                 .product(name: "TinyHttpLibrary", package: "TinyHttp")
