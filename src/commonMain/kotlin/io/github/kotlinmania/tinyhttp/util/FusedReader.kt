@@ -26,6 +26,18 @@ class FusedReader<R>(
         inner = null
     }
 
+    fun read(buf: ByteArray): Int =
+        when (inner) {
+            null -> 0
+            else -> 0
+        }
+
+    fun readVectored(bufs: List<ByteArray>): Int =
+        when (inner) {
+            null -> 0
+            else -> 0
+        }
+
     companion object {
         fun <R> new(inner: R): FusedReader<R> = FusedReader(inner)
     }

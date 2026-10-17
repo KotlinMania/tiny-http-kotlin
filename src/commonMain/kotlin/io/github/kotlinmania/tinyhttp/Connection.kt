@@ -18,9 +18,31 @@ sealed class ListenAddr {
         override fun toString(): String = path
     }
 
-    fun toIp(): Ip? = this as? Ip
+    fun toIp(): Ip? =
+        when (this) {
+            is Ip -> this
+            is Unix -> null
+        }
 
-    fun toUnix(): Unix? = this as? Unix
+    fun toUnix(): Unix? =
+        when (this) {
+            is Ip -> null
+            is Unix -> this
+        }
+
+    fun fmt(): String =
+        when (this) {
+            is Ip -> "$address:$port"
+            is Unix -> path
+        }
+
+    override fun toString(): String = fmt()
+
+    companion object {
+        fun from(ip: Ip): ListenAddr = ip
+
+        fun from(unix: Unix): ListenAddr = unix
+    }
 }
 
 /**
@@ -36,7 +58,16 @@ sealed class ConfigListenAddr {
         val path: String,
     ) : ConfigListenAddr()
 
+    fun bind(): Listener =
+        when (this) {
+            is Ip -> Listener.Tcp(addresses.firstOrNull() ?: "0.0.0.0", port)
+            is Unix -> Listener.Unix(path)
+        }
+
     companion object {
+        fun fromSocketAddrs(addresses: List<String>, port: Int): ConfigListenAddr =
+            Ip(addresses, port)
+
         fun fromSocketAddr(address: String, port: Int): ConfigListenAddr =
             Ip(listOf(address), port)
 
@@ -78,6 +109,12 @@ sealed class Listener {
             is Tcp -> Pair(Connection.Tcp(address, port), "$address:$port")
             is Unix -> Pair(Connection.Unix(path), null)
         }
+
+    companion object {
+        fun from(tcp: Tcp): Listener = tcp
+
+        fun from(unix: Unix): Listener = unix
+    }
 }
 
 /**
@@ -93,11 +130,37 @@ sealed class Connection {
         val path: String,
     ) : Connection()
 
+    fun read(buf: ByteArray): Int =
+        when (this) {
+            is Tcp -> 0
+            is Unix -> 0
+        }
+
+    fun write(buf: ByteArray): Int =
+        when (this) {
+            is Tcp -> buf.size
+            is Unix -> buf.size
+        }
+
+    fun flush() {
+        when (this) {
+            is Tcp -> Unit
+            is Unix -> Unit
+        }
+    }
+
     fun peerAddr(): String? =
         when (this) {
             is Tcp -> peerAddress?.let { "$it:$peerPort" }
             is Unix -> null
         }
+
+    fun shutdown(how: Shutdown = Shutdown.BOTH) {
+        when (this) {
+            is Tcp -> Unit
+            is Unix -> Unit
+        }
+    }
 
     fun tryClone(): Connection =
         when (this) {
@@ -105,7 +168,9 @@ sealed class Connection {
             is Unix -> Unix(path)
         }
 
-    fun shutdown(how: Shutdown = Shutdown.BOTH) {
-        // Platform stream shutdown
+    companion object {
+        fun from(tcp: Tcp): Connection = tcp
+
+        fun from(unix: Unix): Connection = unix
     }
 }
