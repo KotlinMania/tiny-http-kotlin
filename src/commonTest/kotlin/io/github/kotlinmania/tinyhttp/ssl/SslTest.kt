@@ -1,4 +1,3 @@
-// port-lint: source ssl.rs
 package io.github.kotlinmania.tinyhttp.ssl
 
 import kotlin.test.Test
