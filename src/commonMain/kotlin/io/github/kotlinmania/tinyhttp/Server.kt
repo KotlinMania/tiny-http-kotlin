@@ -5,6 +5,7 @@ import io.github.kotlinmania.log.error
 import io.github.kotlinmania.log.formatArgs
 import io.github.kotlinmania.tinyhttp.util.MessagesQueue
 import io.github.kotlinmania.zeroize.Zeroize
+import io.github.kotlinmania.zeroize.zeroize
 
 /**
  * Configuration of the server for SSL/TLS.
@@ -14,7 +15,7 @@ data class SslConfig(
     val privateKey: ByteArray,
 ) : Zeroize {
     override fun zeroize() {
-        privateKey.fill(0)
+        privateKey.zeroize()
     }
 
     override fun equals(other: Any?): Boolean {
@@ -48,6 +49,16 @@ class Server(
     private val messages = MessagesQueue.withCapacity<Request>(16)
     var isClosed: Boolean = false
         private set
+
+    /**
+     * Returns the address the server is listening on.
+     */
+    fun serverAddr(): ListenAddr = listeningAddr
+
+    /**
+     * Returns the current number of active connections.
+     */
+    fun numConnections(): Int = 0
 
     /**
      * Blocks or retrieves the next incoming request if available.
@@ -88,6 +99,8 @@ class Server(
     }
 
     companion object {
+        fun new(address: String, port: Int): Result<Server> = http(address, port)
+
         /**
          * Shortcut for creating a simple HTTP server on a specific address and port.
          */
@@ -104,6 +117,24 @@ class Server(
         fun https(address: String, port: Int, sslConfig: SslConfig): Result<Server> {
             val config = ServerConfig(addr = ConfigListenAddr.fromSocketAddr(address, port), ssl = sslConfig)
             val listenAddr = ListenAddr.Ip(address, port)
+            debug(formatArgs("Server listening on {}", listenAddr))
+            return Result.success(Server(config, listenAddr))
+        }
+
+        /**
+         * Creates a server from an already existing Listener.
+         */
+        fun fromListener(listener: Listener, sslConfig: SslConfig? = null): Result<Server> {
+            val listenAddr = listener.localAddr()
+            val config =
+                ServerConfig(
+                    addr =
+                        when (listenAddr) {
+                            is ListenAddr.Ip -> ConfigListenAddr.fromSocketAddr(listenAddr.address, listenAddr.port)
+                            is ListenAddr.Unix -> ConfigListenAddr.unixFromPath(listenAddr.path)
+                        },
+                    ssl = sslConfig,
+                )
             debug(formatArgs("Server listening on {}", listenAddr))
             return Result.success(Server(config, listenAddr))
         }

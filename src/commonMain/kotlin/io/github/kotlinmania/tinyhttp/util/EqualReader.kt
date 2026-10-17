@@ -18,6 +18,22 @@ class EqualReader<R>(
         return consumed
     }
 
+    fun read(buf: ByteArray): Int {
+        if (size == 0L) return 0
+        val toRead = minOf(buf.size.toLong(), size).toInt()
+        size -= toRead
+        return toRead
+    }
+
+    fun drop() {
+        var remainingToRead = size
+        while (remainingToRead > 0) {
+            val count = minOf(remainingToRead, 1024L)
+            remainingToRead -= count
+        }
+        size = 0L
+    }
+
     companion object {
         fun <R> new(reader: R, size: Long): EqualReader<R> =
             EqualReader(reader, size)

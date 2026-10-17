@@ -144,14 +144,14 @@ EXTRA_TARGET_SYMBOL function CommonTest::testParseHeader at src/commonTest/kotli
 EXTRA_TARGET_SYMBOL function CommonTest::formatsDateCorrectly at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/CommonTest.kt:19
 EXTRA_TARGET_SYMBOL function CommonTest::testParseHeaderWithDoublecolon at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/CommonTest.kt:25
 EXTRA_TARGET_SYMBOL function CommonTest::testStrictHeaders at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/CommonTest.kt:36
-PRESENT type Listener at tmp/tiny_http/src/connection.rs:11 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:60
+PRESENT type Listener at tmp/tiny_http/src/connection.rs:11 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:91
 MISSING_SYMBOL enum_variant Listener::Tcp at tmp/tiny_http/src/connection.rs:12
 MISSING_SYMBOL enum_variant Listener::Unix at tmp/tiny_http/src/connection.rs:14
 MISSING_SYMBOL function local_addr at tmp/tiny_http/src/connection.rs:17
 MISSING_SYMBOL function accept at tmp/tiny_http/src/connection.rs:25
 MISSING_SYMBOL function from at tmp/tiny_http/src/connection.rs:36
 MISSING_SYMBOL function from at tmp/tiny_http/src/connection.rs:42
-PRESENT type Connection at tmp/tiny_http/src/connection.rs:49 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:86
+PRESENT type Connection at tmp/tiny_http/src/connection.rs:49 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:123
 MISSING_SYMBOL enum_variant Connection::Tcp at tmp/tiny_http/src/connection.rs:50
 MISSING_SYMBOL enum_variant Connection::Unix at tmp/tiny_http/src/connection.rs:52
 MISSING_SYMBOL function read at tmp/tiny_http/src/connection.rs:55
@@ -162,7 +162,7 @@ MISSING_SYMBOL function shutdown at tmp/tiny_http/src/connection.rs:90
 MISSING_SYMBOL function try_clone at tmp/tiny_http/src/connection.rs:98
 MISSING_SYMBOL function from at tmp/tiny_http/src/connection.rs:107
 MISSING_SYMBOL function from at tmp/tiny_http/src/connection.rs:113
-PRESENT type ConfigListenAddr at tmp/tiny_http/src/connection.rs:119 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:29
+PRESENT type ConfigListenAddr at tmp/tiny_http/src/connection.rs:119 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:51
 MISSING_SYMBOL enum_variant ConfigListenAddr::IP at tmp/tiny_http/src/connection.rs:120
 MISSING_SYMBOL enum_variant ConfigListenAddr::Unix at tmp/tiny_http/src/connection.rs:123
 MISSING_SYMBOL function from_socket_addrs at tmp/tiny_http/src/connection.rs:126
@@ -185,38 +185,52 @@ EXTRA_TARGET_SYMBOL type ListenAddr::Unix at src/commonMain/kotlin/io/github/kot
 EXTRA_TARGET_SYMBOL property ListenAddr::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:16
 EXTRA_TARGET_SYMBOL function ListenAddr::Unix::toString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:18
 EXTRA_TARGET_SYMBOL function ListenAddr::toIp at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:21
-EXTRA_TARGET_SYMBOL function ListenAddr::toUnix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:23
-EXTRA_TARGET_SYMBOL type ConfigListenAddr::Ip at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:30
-EXTRA_TARGET_SYMBOL property ConfigListenAddr::Ip::addresses at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:31
-EXTRA_TARGET_SYMBOL property ConfigListenAddr::Ip::port at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:32
-EXTRA_TARGET_SYMBOL type ConfigListenAddr::Unix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:35
-EXTRA_TARGET_SYMBOL property ConfigListenAddr::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:36
-EXTRA_TARGET_SYMBOL function ConfigListenAddr::Companion::fromSocketAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:40
-EXTRA_TARGET_SYMBOL function ConfigListenAddr::Companion::unixFromPath at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:43
-EXTRA_TARGET_SYMBOL type Shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:51
-EXTRA_TARGET_SYMBOL enum_variant Shutdown::READ at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:52
-EXTRA_TARGET_SYMBOL enum_variant Shutdown::WRITE at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:53
-EXTRA_TARGET_SYMBOL enum_variant Shutdown::BOTH at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:54
-EXTRA_TARGET_SYMBOL type Listener::Tcp at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:61
-EXTRA_TARGET_SYMBOL property Listener::Tcp::address at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:62
-EXTRA_TARGET_SYMBOL property Listener::Tcp::port at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:63
-EXTRA_TARGET_SYMBOL type Listener::Unix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:66
-EXTRA_TARGET_SYMBOL property Listener::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:67
-EXTRA_TARGET_SYMBOL function Listener::localAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:70
-EXTRA_TARGET_SYMBOL function Listener::accept at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:76
-EXTRA_TARGET_SYMBOL type Connection::Tcp at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:87
-EXTRA_TARGET_SYMBOL property Connection::Tcp::peerAddress at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:88
-EXTRA_TARGET_SYMBOL property Connection::Tcp::peerPort at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:89
-EXTRA_TARGET_SYMBOL type Connection::Unix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:92
-EXTRA_TARGET_SYMBOL property Connection::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:93
-EXTRA_TARGET_SYMBOL function Connection::peerAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:96
-EXTRA_TARGET_SYMBOL function Connection::tryClone at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:102
-EXTRA_TARGET_SYMBOL function Connection::shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:108
+EXTRA_TARGET_SYMBOL function ListenAddr::toUnix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:27
+EXTRA_TARGET_SYMBOL function ListenAddr::fmt at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:33
+EXTRA_TARGET_SYMBOL function ListenAddr::toString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:39
+EXTRA_TARGET_SYMBOL function ListenAddr::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:42
+EXTRA_TARGET_SYMBOL function ListenAddr::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:44
+EXTRA_TARGET_SYMBOL type ConfigListenAddr::Ip at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:52
+EXTRA_TARGET_SYMBOL property ConfigListenAddr::Ip::addresses at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:53
+EXTRA_TARGET_SYMBOL property ConfigListenAddr::Ip::port at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:54
+EXTRA_TARGET_SYMBOL type ConfigListenAddr::Unix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:57
+EXTRA_TARGET_SYMBOL property ConfigListenAddr::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:58
+EXTRA_TARGET_SYMBOL function ConfigListenAddr::bind at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:61
+EXTRA_TARGET_SYMBOL function ConfigListenAddr::Companion::fromSocketAddrs at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:68
+EXTRA_TARGET_SYMBOL function ConfigListenAddr::Companion::fromSocketAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:71
+EXTRA_TARGET_SYMBOL function ConfigListenAddr::Companion::unixFromPath at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:74
+EXTRA_TARGET_SYMBOL type Shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:82
+EXTRA_TARGET_SYMBOL enum_variant Shutdown::READ at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:83
+EXTRA_TARGET_SYMBOL enum_variant Shutdown::WRITE at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:84
+EXTRA_TARGET_SYMBOL enum_variant Shutdown::BOTH at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:85
+EXTRA_TARGET_SYMBOL type Listener::Tcp at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:92
+EXTRA_TARGET_SYMBOL property Listener::Tcp::address at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:93
+EXTRA_TARGET_SYMBOL property Listener::Tcp::port at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:94
+EXTRA_TARGET_SYMBOL type Listener::Unix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:97
+EXTRA_TARGET_SYMBOL property Listener::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:98
+EXTRA_TARGET_SYMBOL function Listener::localAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:101
+EXTRA_TARGET_SYMBOL function Listener::accept at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:107
+EXTRA_TARGET_SYMBOL function Listener::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:114
+EXTRA_TARGET_SYMBOL function Listener::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:116
+EXTRA_TARGET_SYMBOL type Connection::Tcp at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:124
+EXTRA_TARGET_SYMBOL property Connection::Tcp::peerAddress at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:125
+EXTRA_TARGET_SYMBOL property Connection::Tcp::peerPort at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:126
+EXTRA_TARGET_SYMBOL type Connection::Unix at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:129
+EXTRA_TARGET_SYMBOL property Connection::Unix::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:130
+EXTRA_TARGET_SYMBOL function Connection::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:133
+EXTRA_TARGET_SYMBOL function Connection::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:139
+EXTRA_TARGET_SYMBOL function Connection::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:145
+EXTRA_TARGET_SYMBOL function Connection::peerAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:152
+EXTRA_TARGET_SYMBOL function Connection::shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:158
+EXTRA_TARGET_SYMBOL function Connection::tryClone at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:165
+EXTRA_TARGET_SYMBOL function Connection::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:172
+EXTRA_TARGET_SYMBOL function Connection::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Connection.kt:174
 EXTRA_TARGET_SYMBOL type ConnectionTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ConnectionTest.kt:8
 EXTRA_TARGET_SYMBOL function ConnectionTest::testListenAddr at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ConnectionTest.kt:9
 EXTRA_TARGET_SYMBOL function ConnectionTest::testConfigListenAddr at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ConnectionTest.kt:22
 EXTRA_TARGET_SYMBOL function ConnectionTest::testListenerAndConnection at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ConnectionTest.kt:31
-PRESENT type Server at tmp/tiny_http/src/lib.rs:133 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:45
+MISSING_FILE lib.rs
+MISSING_SYMBOL type Server at tmp/tiny_http/src/lib.rs:133
 MISSING_SYMBOL type Message at tmp/tiny_http/src/lib.rs:145
 MISSING_SYMBOL enum_variant Message::Error at tmp/tiny_http/src/lib.rs:146
 MISSING_SYMBOL enum_variant Message::NewRequest at tmp/tiny_http/src/lib.rs:147
@@ -224,8 +238,8 @@ MISSING_SYMBOL function from at tmp/tiny_http/src/lib.rs:151
 MISSING_SYMBOL function from at tmp/tiny_http/src/lib.rs:157
 MISSING_SYMBOL type MustBeShareDummy at tmp/tiny_http/src/lib.rs:164
 MISSING_SYMBOL type IncomingRequests at tmp/tiny_http/src/lib.rs:168
-PRESENT type ServerConfig at tmp/tiny_http/src/lib.rs:174 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:37
-PRESENT type SslConfig at tmp/tiny_http/src/lib.rs:184 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:13
+MISSING_SYMBOL type ServerConfig at tmp/tiny_http/src/lib.rs:174
+MISSING_SYMBOL type SslConfig at tmp/tiny_http/src/lib.rs:184
 MISSING_SYMBOL function http at tmp/tiny_http/src/lib.rs:194
 MISSING_SYMBOL function https at tmp/tiny_http/src/lib.rs:207
 MISSING_SYMBOL function http_unix at tmp/tiny_http/src/lib.rs:223
@@ -241,32 +255,13 @@ MISSING_SYMBOL function unblock at tmp/tiny_http/src/lib.rs:409
 MISSING_SYMBOL type_alias Item at tmp/tiny_http/src/lib.rs:415
 MISSING_SYMBOL function next at tmp/tiny_http/src/lib.rs:416
 MISSING_SYMBOL function drop at tmp/tiny_http/src/lib.rs:422
-EXTRA_TARGET_SYMBOL property SslConfig::certificate at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:14
-EXTRA_TARGET_SYMBOL property SslConfig::privateKey at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:15
-EXTRA_TARGET_SYMBOL function SslConfig::zeroize at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:17
-EXTRA_TARGET_SYMBOL function SslConfig::equals at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:21
-EXTRA_TARGET_SYMBOL function SslConfig::hashCode at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:27
-EXTRA_TARGET_SYMBOL property ServerConfig::addr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:38
-EXTRA_TARGET_SYMBOL property ServerConfig::ssl at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:39
-EXTRA_TARGET_SYMBOL property Server::config at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:46
-EXTRA_TARGET_SYMBOL property Server::listeningAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:47
-EXTRA_TARGET_SYMBOL property Server::messages at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:49
-EXTRA_TARGET_SYMBOL property Server::isClosed at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:50
-EXTRA_TARGET_SYMBOL function Server::recv at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:56
-EXTRA_TARGET_SYMBOL function Server::tryRecv at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:68
-EXTRA_TARGET_SYMBOL function Server::unblock at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:76
-EXTRA_TARGET_SYMBOL function Server::enqueueRequest at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:85
-EXTRA_TARGET_SYMBOL function Server::Companion::http at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:95
-EXTRA_TARGET_SYMBOL function Server::Companion::https at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Server.kt:105
-EXTRA_TARGET_SYMBOL type ServerTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ServerTest.kt:10
-EXTRA_TARGET_SYMBOL function ServerTest::testServerCreationAndRequests at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ServerTest.kt:11
-PRESENT type Request at tmp/tiny_http/src/request.rs:50 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:18
-MISSING_SYMBOL type NotifyOnDrop at tmp/tiny_http/src/request.rs:79
+PRESENT type Request at tmp/tiny_http/src/request.rs:50 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:60
+PRESENT type NotifyOnDrop at tmp/tiny_http/src/request.rs:79 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:10
 MISSING_SYMBOL function read at tmp/tiny_http/src/request.rs:85
 MISSING_SYMBOL function write at tmp/tiny_http/src/request.rs:90
 MISSING_SYMBOL function flush at tmp/tiny_http/src/request.rs:93
 MISSING_SYMBOL function drop at tmp/tiny_http/src/request.rs:98
-PRESENT type RequestCreationError at tmp/tiny_http/src/request.rs:105 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:7
+PRESENT type RequestCreationError at tmp/tiny_http/src/request.rs:105 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:34
 MISSING_SYMBOL enum_variant RequestCreationError::ExpectationFailed at tmp/tiny_http/src/request.rs:107
 MISSING_SYMBOL enum_variant RequestCreationError::CreationIoError at tmp/tiny_http/src/request.rs:110
 MISSING_SYMBOL function from at tmp/tiny_http/src/request.rs:114
@@ -289,27 +284,57 @@ MISSING_SYMBOL function ignore_client_closing_errors at tmp/tiny_http/src/reques
 MISSING_SYMBOL function with_notify_sender at tmp/tiny_http/src/request.rs:472
 MISSING_SYMBOL function fmt at tmp/tiny_http/src/request.rs:479
 MISSING_SYMBOL function drop at tmp/tiny_http/src/request.rs:489
-MISSING_SYMBOL type ReadWrite at tmp/tiny_http/src/request.rs:503
+PRESENT type ReadWrite at tmp/tiny_http/src/request.rs:503 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:49
 MISSING_SYMBOL function must_be_send at tmp/tiny_http/src/request.rs:511
-EXTRA_TARGET_SYMBOL type RequestCreationError::ExpectationFailed at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:8
-EXTRA_TARGET_SYMBOL type RequestCreationError::CreationIoError at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:10
-EXTRA_TARGET_SYMBOL property RequestCreationError::CreationIoError::message at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:11
-EXTRA_TARGET_SYMBOL property Request::method at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:19
-EXTRA_TARGET_SYMBOL property Request::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:20
-EXTRA_TARGET_SYMBOL property Request::httpVersion at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:21
-EXTRA_TARGET_SYMBOL property Request::headers at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:22
-EXTRA_TARGET_SYMBOL property Request::body at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:23
-EXTRA_TARGET_SYMBOL property Request::remoteAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:24
-EXTRA_TARGET_SYMBOL property Request::secure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:25
-EXTRA_TARGET_SYMBOL property Request::bodyLength at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:26
-EXTRA_TARGET_SYMBOL function Request::url at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:31
-EXTRA_TARGET_SYMBOL function Request::asReader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:36
-EXTRA_TARGET_SYMBOL function Request::asString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:41
-EXTRA_TARGET_SYMBOL function Request::respond at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:46
-EXTRA_TARGET_SYMBOL function Request::Companion::newRequest at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:53
+EXTRA_TARGET_SYMBOL property NotifyOnDrop::sender at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:11
+EXTRA_TARGET_SYMBOL property NotifyOnDrop::inner at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:12
+EXTRA_TARGET_SYMBOL function NotifyOnDrop::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:14
+EXTRA_TARGET_SYMBOL function NotifyOnDrop::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:16
+EXTRA_TARGET_SYMBOL function NotifyOnDrop::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:18
+EXTRA_TARGET_SYMBOL function NotifyOnDrop::close at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:22
+EXTRA_TARGET_SYMBOL function NotifyOnDrop::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:26
+EXTRA_TARGET_SYMBOL type RequestCreationError::ExpectationFailed at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:35
+EXTRA_TARGET_SYMBOL type RequestCreationError::CreationIoError at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:37
+EXTRA_TARGET_SYMBOL property RequestCreationError::CreationIoError::message at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:38
+EXTRA_TARGET_SYMBOL function RequestCreationError::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:42
+EXTRA_TARGET_SYMBOL function ReadWrite::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:50
+EXTRA_TARGET_SYMBOL function ReadWrite::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:52
+EXTRA_TARGET_SYMBOL function ReadWrite::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:54
+EXTRA_TARGET_SYMBOL property Request::method at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:61
+EXTRA_TARGET_SYMBOL property Request::path at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:62
+EXTRA_TARGET_SYMBOL property Request::httpVersion at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:63
+EXTRA_TARGET_SYMBOL property Request::headers at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:64
+EXTRA_TARGET_SYMBOL property Request::body at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:65
+EXTRA_TARGET_SYMBOL property Request::remoteAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:66
+EXTRA_TARGET_SYMBOL property Request::secure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:67
+EXTRA_TARGET_SYMBOL property Request::bodyLength at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:68
+EXTRA_TARGET_SYMBOL property Request::dataReader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:70
+EXTRA_TARGET_SYMBOL property Request::responseWriter at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:71
+EXTRA_TARGET_SYMBOL property Request::mustSendContinue at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:72
+EXTRA_TARGET_SYMBOL property Request::notifyWhenResponded at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:73
+EXTRA_TARGET_SYMBOL function Request::url at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:78
+EXTRA_TARGET_SYMBOL function Request::upgrade at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:83
+EXTRA_TARGET_SYMBOL function Request::asReader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:101
+EXTRA_TARGET_SYMBOL function Request::asString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:119
+EXTRA_TARGET_SYMBOL function Request::intoWriter at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:124
+EXTRA_TARGET_SYMBOL function Request::extractWriterImpl at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:129
+EXTRA_TARGET_SYMBOL function Request::extractReaderImpl at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:138
+EXTRA_TARGET_SYMBOL function Request::respond at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:147
+EXTRA_TARGET_SYMBOL function Request::respondImpl at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:153
+EXTRA_TARGET_SYMBOL function Request::ignoreClientClosingErrors at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:167
+EXTRA_TARGET_SYMBOL function Request::withNotifySender at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:169
+EXTRA_TARGET_SYMBOL function Request::fmt at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:174
+EXTRA_TARGET_SYMBOL function Request::toString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:176
+EXTRA_TARGET_SYMBOL function Request::close at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:178
+EXTRA_TARGET_SYMBOL function Request::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:182
+EXTRA_TARGET_SYMBOL property Request::Companion::WEBSOCKET_GUID at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:191
+EXTRA_TARGET_SYMBOL function Request::Companion::convertWebSocketKey at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:196
+EXTRA_TARGET_SYMBOL function Request::Companion::newRequest at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Request.kt:207
 EXTRA_TARGET_SYMBOL type RequestTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/RequestTest.kt:9
 EXTRA_TARGET_SYMBOL function RequestTest::testRequestCreation at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/RequestTest.kt:10
 EXTRA_TARGET_SYMBOL function RequestTest::testExpectationFailed at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/RequestTest.kt:33
+EXTRA_TARGET_SYMBOL function RequestTest::mustBeSend at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/RequestTest.kt:48
+EXTRA_TARGET_SYMBOL function RequestTest::testConvertWebSocketKey at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/RequestTest.kt:68
 PRESENT type Response at tmp/tiny_http/src/response.rs:40 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:26
 MISSING_SYMBOL type_alias ResponseBox at tmp/tiny_http/src/response.rs:49
 PRESENT type TransferEncoding at tmp/tiny_http/src/response.rs:54 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:8
@@ -318,8 +343,8 @@ PRESENT enum_variant TransferEncoding::Chunked at tmp/tiny_http/src/response.rs:
 MISSING_SYMBOL type_alias Err at tmp/tiny_http/src/response.rs:60
 MISSING_SYMBOL function from_str at tmp/tiny_http/src/response.rs:62
 MISSING_SYMBOL function build_date_header at tmp/tiny_http/src/response.rs:74
-MISSING_SYMBOL function write_message_header at tmp/tiny_http/src/response.rs:79
-PRESENT function choose_transfer_encoding at tmp/tiny_http/src/response.rs:112 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:159
+PRESENT function write_message_header at tmp/tiny_http/src/response.rs:79 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:212
+PRESENT function choose_transfer_encoding at tmp/tiny_http/src/response.rs:112 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:242
 MISSING_SYMBOL function new at tmp/tiny_http/src/response.rs:196
 MISSING_SYMBOL function with_chunked_threshold at tmp/tiny_http/src/response.rs:229
 MISSING_SYMBOL function into_reader at tmp/tiny_http/src/response.rs:237
@@ -354,23 +379,23 @@ EXTRA_TARGET_SYMBOL function Response::withHeader at src/commonMain/kotlin/io/gi
 EXTRA_TARGET_SYMBOL function Response::withStatusCode at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:95
 EXTRA_TARGET_SYMBOL function Response::withStatusCode at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:100
 EXTRA_TARGET_SYMBOL function Response::withData at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:105
-EXTRA_TARGET_SYMBOL function Response::Companion::fromData at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:118
-EXTRA_TARGET_SYMBOL function Response::Companion::fromString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:129
-EXTRA_TARGET_SYMBOL function Response::Companion::empty at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:143
-EXTRA_TARGET_SYMBOL function Response::Companion::empty at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:151
+EXTRA_TARGET_SYMBOL function Response::boxed at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:117
+EXTRA_TARGET_SYMBOL function Response::clone at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:119
+EXTRA_TARGET_SYMBOL function Response::rawPrint at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:131
+EXTRA_TARGET_SYMBOL function Response::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:143
+EXTRA_TARGET_SYMBOL function Response::Companion::fromData at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:168
+EXTRA_TARGET_SYMBOL function Response::Companion::fromString at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:179
+EXTRA_TARGET_SYMBOL function Response::Companion::empty at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:193
+EXTRA_TARGET_SYMBOL function Response::Companion::empty at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:201
+EXTRA_TARGET_SYMBOL function Response::Companion::newEmpty at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Response.kt:207
 EXTRA_TARGET_SYMBOL type ResponseTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ResponseTest.kt:8
 EXTRA_TARGET_SYMBOL function ResponseTest::testFromString at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ResponseTest.kt:9
 EXTRA_TARGET_SYMBOL function ResponseTest::testAddHeaderForbidden at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ResponseTest.kt:19
 EXTRA_TARGET_SYMBOL function ResponseTest::testAddHeaderContentTypeOverwrite at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ResponseTest.kt:32
 EXTRA_TARGET_SYMBOL function ResponseTest::testChooseTransferEncoding at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ResponseTest.kt:44
-EXTRA_TARGET_SYMBOL type SslContext at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Ssl.kt:7
-EXTRA_TARGET_SYMBOL function SslContext::isSupported at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Ssl.kt:8
-EXTRA_TARGET_SYMBOL type SslStream at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Ssl.kt:14
-EXTRA_TARGET_SYMBOL function SslStream::isSecure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Ssl.kt:15
-EXTRA_TARGET_SYMBOL type SslTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ssl/SslTest.kt:7
-EXTRA_TARGET_SYMBOL function SslTest::testSslContexts at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/ssl/SslTest.kt:8
-MISSING_SYMBOL type OpenSslStream at tmp/tiny_http/src/ssl/openssl.rs:9
-MISSING_SYMBOL type SplitOpenSslStream at tmp/tiny_http/src/ssl/openssl.rs:14
+MISSING_FILE ssl.rs
+PRESENT type OpenSslStream at tmp/tiny_http/src/ssl/openssl.rs:9 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:10
+PRESENT type SplitOpenSslStream at tmp/tiny_http/src/ssl/openssl.rs:14 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:23
 MISSING_SYMBOL function peer_addr at tmp/tiny_http/src/ssl/openssl.rs:18
 MISSING_SYMBOL function shutdown at tmp/tiny_http/src/ssl/openssl.rs:22
 MISSING_SYMBOL function clone at tmp/tiny_http/src/ssl/openssl.rs:28
@@ -380,29 +405,53 @@ MISSING_SYMBOL function flush at tmp/tiny_http/src/ssl/openssl.rs:44
 MISSING_SYMBOL function read at tmp/tiny_http/src/ssl/openssl.rs:50
 MISSING_SYMBOL function write at tmp/tiny_http/src/ssl/openssl.rs:56
 MISSING_SYMBOL function flush at tmp/tiny_http/src/ssl/openssl.rs:60
-PRESENT type OpenSslContext at tmp/tiny_http/src/ssl/openssl.rs:65 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:7
+PRESENT type OpenSslContext at tmp/tiny_http/src/ssl/openssl.rs:65 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:42
 MISSING_SYMBOL function from_pem at tmp/tiny_http/src/ssl/openssl.rs:68
 MISSING_SYMBOL function accept at tmp/tiny_http/src/ssl/openssl.rs:95
 MISSING_SYMBOL function from at tmp/tiny_http/src/ssl/openssl.rs:107
-EXTRA_TARGET_SYMBOL property OpenSslContext::certificates at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:8
-EXTRA_TARGET_SYMBOL property OpenSslContext::privateKey at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:9
-EXTRA_TARGET_SYMBOL function OpenSslContext::isSupported at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:11
-EXTRA_TARGET_SYMBOL function OpenSslContext::Companion::fromPem at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:14
-MISSING_SYMBOL type RustlsStream at tmp/tiny_http/src/ssl/rustls.rs:12
+EXTRA_TARGET_SYMBOL property OpenSslStream::connection at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:11
+EXTRA_TARGET_SYMBOL function OpenSslStream::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:13
+EXTRA_TARGET_SYMBOL function OpenSslStream::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:15
+EXTRA_TARGET_SYMBOL function OpenSslStream::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:17
+EXTRA_TARGET_SYMBOL property SplitOpenSslStream::inner at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:24
+EXTRA_TARGET_SYMBOL function SplitOpenSslStream::peerAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:26
+EXTRA_TARGET_SYMBOL function SplitOpenSslStream::shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:28
+EXTRA_TARGET_SYMBOL function SplitOpenSslStream::clone at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:30
+EXTRA_TARGET_SYMBOL function SplitOpenSslStream::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:32
+EXTRA_TARGET_SYMBOL function SplitOpenSslStream::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:34
+EXTRA_TARGET_SYMBOL function SplitOpenSslStream::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:36
+EXTRA_TARGET_SYMBOL property OpenSslContext::certificates at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:43
+EXTRA_TARGET_SYMBOL property OpenSslContext::privateKey at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:44
+EXTRA_TARGET_SYMBOL function OpenSslContext::isSupported at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:46
+EXTRA_TARGET_SYMBOL function OpenSslContext::accept at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:48
+EXTRA_TARGET_SYMBOL function OpenSslContext::Companion::fromPem at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:52
+EXTRA_TARGET_SYMBOL function OpenSslContext::Companion::fromPem at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:57
+EXTRA_TARGET_SYMBOL function OpenSslContext::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/OpenSsl.kt:60
+PRESENT type RustlsStream at tmp/tiny_http/src/ssl/rustls.rs:12 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:13
 MISSING_SYMBOL function peer_addr at tmp/tiny_http/src/ssl/rustls.rs:17
 MISSING_SYMBOL function shutdown at tmp/tiny_http/src/ssl/rustls.rs:25
 MISSING_SYMBOL function clone at tmp/tiny_http/src/ssl/rustls.rs:35
 MISSING_SYMBOL function read at tmp/tiny_http/src/ssl/rustls.rs:41
 MISSING_SYMBOL function write at tmp/tiny_http/src/ssl/rustls.rs:50
 MISSING_SYMBOL function flush at tmp/tiny_http/src/ssl/rustls.rs:57
-PRESENT type RustlsContext at tmp/tiny_http/src/ssl/rustls.rs:65 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:7
+PRESENT type RustlsContext at tmp/tiny_http/src/ssl/rustls.rs:65 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:32
 MISSING_SYMBOL function from_pem at tmp/tiny_http/src/ssl/rustls.rs:68
 MISSING_SYMBOL function accept at tmp/tiny_http/src/ssl/rustls.rs:105
 MISSING_SYMBOL function from at tmp/tiny_http/src/ssl/rustls.rs:117
-EXTRA_TARGET_SYMBOL property RustlsContext::certificates at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:8
-EXTRA_TARGET_SYMBOL property RustlsContext::privateKey at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:9
-EXTRA_TARGET_SYMBOL function RustlsContext::isSupported at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:11
-EXTRA_TARGET_SYMBOL function RustlsContext::Companion::fromPem at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:14
+EXTRA_TARGET_SYMBOL property RustlsStream::connection at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:14
+EXTRA_TARGET_SYMBOL function RustlsStream::peerAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:16
+EXTRA_TARGET_SYMBOL function RustlsStream::shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:18
+EXTRA_TARGET_SYMBOL function RustlsStream::clone at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:20
+EXTRA_TARGET_SYMBOL function RustlsStream::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:22
+EXTRA_TARGET_SYMBOL function RustlsStream::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:24
+EXTRA_TARGET_SYMBOL function RustlsStream::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:26
+EXTRA_TARGET_SYMBOL property RustlsContext::certificates at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:33
+EXTRA_TARGET_SYMBOL property RustlsContext::privateKey at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:34
+EXTRA_TARGET_SYMBOL function RustlsContext::isSupported at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:36
+EXTRA_TARGET_SYMBOL function RustlsContext::accept at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:38
+EXTRA_TARGET_SYMBOL function RustlsContext::Companion::fromPem at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:42
+EXTRA_TARGET_SYMBOL function RustlsContext::Companion::fromPem at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:47
+EXTRA_TARGET_SYMBOL function RustlsContext::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/ssl/Rustls.kt:50
 PRESENT type TestRequest at tmp/tiny_http/src/test.rs:42 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/TestRequest.kt:17
 MISSING_SYMBOL function from at tmp/tiny_http/src/test.rs:54
 MISSING_SYMBOL function default at tmp/tiny_http/src/test.rs:82
@@ -439,7 +488,11 @@ MISSING_SYMBOL function write at tmp/tiny_http/src/util/custom_stream.rs:32
 MISSING_SYMBOL function flush at tmp/tiny_http/src/util/custom_stream.rs:36
 EXTRA_TARGET_SYMBOL property CustomStream::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:8
 EXTRA_TARGET_SYMBOL property CustomStream::writer at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:9
-EXTRA_TARGET_SYMBOL function CustomStream::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:12
+EXTRA_TARGET_SYMBOL function CustomStream::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:11
+EXTRA_TARGET_SYMBOL function CustomStream::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:13
+EXTRA_TARGET_SYMBOL function CustomStream::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:15
+EXTRA_TARGET_SYMBOL function CustomStream::close at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:17
+EXTRA_TARGET_SYMBOL function CustomStream::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/CustomStream.kt:20
 PRESENT type EqualReader at tmp/tiny_http/src/util/equal_reader.rs:11 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:7
 MISSING_SYMBOL function new at tmp/tiny_http/src/util/equal_reader.rs:24
 MISSING_SYMBOL function read at tmp/tiny_http/src/util/equal_reader.rs:41
@@ -449,7 +502,9 @@ MISSING_SYMBOL function test_not_enough at tmp/tiny_http/src/util/equal_reader.r
 EXTRA_TARGET_SYMBOL property EqualReader::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:8
 EXTRA_TARGET_SYMBOL property EqualReader::size at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:9
 EXTRA_TARGET_SYMBOL function EqualReader::consume at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:14
-EXTRA_TARGET_SYMBOL function EqualReader::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:22
+EXTRA_TARGET_SYMBOL function EqualReader::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:21
+EXTRA_TARGET_SYMBOL function EqualReader::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:28
+EXTRA_TARGET_SYMBOL function EqualReader::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReader.kt:38
 EXTRA_TARGET_SYMBOL type EqualReaderTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReaderTest.kt:7
 EXTRA_TARGET_SYMBOL function EqualReaderTest::testLimit at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReaderTest.kt:8
 EXTRA_TARGET_SYMBOL function EqualReaderTest::testNotEnough at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/EqualReaderTest.kt:18
@@ -462,7 +517,9 @@ EXTRA_TARGET_SYMBOL property FusedReader::inner at src/commonMain/kotlin/io/gith
 EXTRA_TARGET_SYMBOL function FusedReader::intoInner at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:15
 EXTRA_TARGET_SYMBOL function FusedReader::hasInner at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:20
 EXTRA_TARGET_SYMBOL function FusedReader::release at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:25
-EXTRA_TARGET_SYMBOL function FusedReader::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:30
+EXTRA_TARGET_SYMBOL function FusedReader::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:29
+EXTRA_TARGET_SYMBOL function FusedReader::readVectored at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:35
+EXTRA_TARGET_SYMBOL function FusedReader::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReader.kt:42
 EXTRA_TARGET_SYMBOL type FusedReaderTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReaderTest.kt:10
 EXTRA_TARGET_SYMBOL function FusedReaderTest::testFusedReaderLifecycle at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/FusedReaderTest.kt:11
 PRESENT type Control at tmp/tiny_http/src/util/messages_queue.rs:5 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/MessagesQueue.kt:7
@@ -490,11 +547,10 @@ EXTRA_TARGET_SYMBOL type MessagesQueueTest at src/commonTest/kotlin/io/github/ko
 EXTRA_TARGET_SYMBOL function MessagesQueueTest::testPushAndPop at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/MessagesQueueTest.kt:10
 EXTRA_TARGET_SYMBOL function MessagesQueueTest::testUnblockSignal at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/MessagesQueueTest.kt:21
 EXTRA_TARGET_SYMBOL function MessagesQueueTest::testPopTimeout at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/MessagesQueueTest.kt:30
-PRESENT function parse_header_value at tmp/tiny_http/src/util/mod.rs:25 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/Util.kt:11
+MISSING_FILE util/mod.rs
+MISSING_SYMBOL function parse_header_value at tmp/tiny_http/src/util/mod.rs:25
 MISSING_SYMBOL function test_parse_header at tmp/tiny_http/src/util/mod.rs:53
-EXTRA_TARGET_SYMBOL type UtilTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/UtilTest.kt:7
-EXTRA_TARGET_SYMBOL function UtilTest::testParseHeader at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/UtilTest.kt:8
-PRESENT type Stream at tmp/tiny_http/src/util/refined_tcp_stream.rs:9 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:7
+PRESENT type Stream at tmp/tiny_http/src/util/refined_tcp_stream.rs:9 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:10
 MISSING_SYMBOL enum_variant Stream::Http at tmp/tiny_http/src/util/refined_tcp_stream.rs:10
 MISSING_SYMBOL enum_variant Stream::Https at tmp/tiny_http/src/util/refined_tcp_stream.rs:12
 MISSING_SYMBOL function clone at tmp/tiny_http/src/util/refined_tcp_stream.rs:16
@@ -505,7 +561,7 @@ MISSING_SYMBOL function shutdown at tmp/tiny_http/src/util/refined_tcp_stream.rs
 MISSING_SYMBOL function read at tmp/tiny_http/src/util/refined_tcp_stream.rs:58
 MISSING_SYMBOL function write at tmp/tiny_http/src/util/refined_tcp_stream.rs:68
 MISSING_SYMBOL function flush at tmp/tiny_http/src/util/refined_tcp_stream.rs:76
-PRESENT type RefinedTcpStream at tmp/tiny_http/src/util/refined_tcp_stream.rs:85 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:22
+PRESENT type RefinedTcpStream at tmp/tiny_http/src/util/refined_tcp_stream.rs:85 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:76
 MISSING_SYMBOL function new at tmp/tiny_http/src/util/refined_tcp_stream.rs:92
 MISSING_SYMBOL function secure at tmp/tiny_http/src/util/refined_tcp_stream.rs:117
 MISSING_SYMBOL function peer_addr at tmp/tiny_http/src/util/refined_tcp_stream.rs:121
@@ -513,30 +569,44 @@ MISSING_SYMBOL function drop at tmp/tiny_http/src/util/refined_tcp_stream.rs:127
 MISSING_SYMBOL function read at tmp/tiny_http/src/util/refined_tcp_stream.rs:139
 MISSING_SYMBOL function write at tmp/tiny_http/src/util/refined_tcp_stream.rs:145
 MISSING_SYMBOL function flush at tmp/tiny_http/src/util/refined_tcp_stream.rs:149
-EXTRA_TARGET_SYMBOL type Stream::Http at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:8
-EXTRA_TARGET_SYMBOL property Stream::Http::connection at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:9
-EXTRA_TARGET_SYMBOL type Stream::Https at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:12
-EXTRA_TARGET_SYMBOL property Stream::Https::secureStream at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:13
-EXTRA_TARGET_SYMBOL function Stream::isSecure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:16
-EXTRA_TARGET_SYMBOL property RefinedTcpStream::stream at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:23
-EXTRA_TARGET_SYMBOL property RefinedTcpStream::closeRead at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:24
-EXTRA_TARGET_SYMBOL property RefinedTcpStream::closeWrite at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:25
-EXTRA_TARGET_SYMBOL function RefinedTcpStream::isSecure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:30
-EXTRA_TARGET_SYMBOL function RefinedTcpStream::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:33
+EXTRA_TARGET_SYMBOL type Stream::Http at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:11
+EXTRA_TARGET_SYMBOL property Stream::Http::connection at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:12
+EXTRA_TARGET_SYMBOL type Stream::Https at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:15
+EXTRA_TARGET_SYMBOL property Stream::Https::secureStream at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:16
+EXTRA_TARGET_SYMBOL function Stream::clone at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:19
+EXTRA_TARGET_SYMBOL function Stream::secure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:28
+EXTRA_TARGET_SYMBOL function Stream::isSecure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:34
+EXTRA_TARGET_SYMBOL function Stream::peerAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:36
+EXTRA_TARGET_SYMBOL function Stream::shutdown at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:42
+EXTRA_TARGET_SYMBOL function Stream::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:49
+EXTRA_TARGET_SYMBOL function Stream::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:55
+EXTRA_TARGET_SYMBOL function Stream::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:61
+EXTRA_TARGET_SYMBOL function Stream::Companion::from at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:69
+EXTRA_TARGET_SYMBOL property RefinedTcpStream::stream at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:77
+EXTRA_TARGET_SYMBOL property RefinedTcpStream::closeRead at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:78
+EXTRA_TARGET_SYMBOL property RefinedTcpStream::closeWrite at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:79
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::secure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:84
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::isSecure at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:86
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::peerAddr at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:88
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:90
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:99
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:101
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:103
+EXTRA_TARGET_SYMBOL function RefinedTcpStream::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStream.kt:106
 EXTRA_TARGET_SYMBOL type RefinedTcpStreamTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStreamTest.kt:8
 EXTRA_TARGET_SYMBOL function RefinedTcpStreamTest::testRefinedTcpStreamSplit at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStreamTest.kt:9
 EXTRA_TARGET_SYMBOL function RefinedTcpStreamTest::testSecureStream at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/RefinedTcpStreamTest.kt:20
-PRESENT type SequentialReaderBuilder at tmp/tiny_http/src/util/sequential.rs:10 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:14
-MISSING_SYMBOL type SequentialReaderBuilderInner at tmp/tiny_http/src/util/sequential.rs:17
+PRESENT type SequentialReaderBuilder at tmp/tiny_http/src/util/sequential.rs:10 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:40
+PRESENT type SequentialReaderBuilderInner at tmp/tiny_http/src/util/sequential.rs:17 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:4
 MISSING_SYMBOL enum_variant SequentialReaderBuilderInner::First at tmp/tiny_http/src/util/sequential.rs:21
 MISSING_SYMBOL enum_variant SequentialReaderBuilderInner::NotFirst at tmp/tiny_http/src/util/sequential.rs:22
-PRESENT type SequentialReader at tmp/tiny_http/src/util/sequential.rs:25 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:7
-MISSING_SYMBOL type SequentialReaderInner at tmp/tiny_http/src/util/sequential.rs:33
+PRESENT type SequentialReader at tmp/tiny_http/src/util/sequential.rs:25 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:29
+PRESENT type SequentialReaderInner at tmp/tiny_http/src/util/sequential.rs:33 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:14
 MISSING_SYMBOL enum_variant SequentialReaderInner::MyTurn at tmp/tiny_http/src/util/sequential.rs:37
 MISSING_SYMBOL enum_variant SequentialReaderInner::Waiting at tmp/tiny_http/src/util/sequential.rs:38
 MISSING_SYMBOL enum_variant SequentialReaderInner::Empty at tmp/tiny_http/src/util/sequential.rs:39
-PRESENT type SequentialWriterBuilder at tmp/tiny_http/src/util/sequential.rs:42 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:35
-PRESENT type SequentialWriter at tmp/tiny_http/src/util/sequential.rs:50 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:28
+PRESENT type SequentialWriterBuilder at tmp/tiny_http/src/util/sequential.rs:42 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:69
+PRESENT type SequentialWriter at tmp/tiny_http/src/util/sequential.rs:50 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:56
 MISSING_SYMBOL function new at tmp/tiny_http/src/util/sequential.rs:60
 MISSING_SYMBOL function new at tmp/tiny_http/src/util/sequential.rs:68
 MISSING_SYMBOL type_alias Item at tmp/tiny_http/src/util/sequential.rs:77
@@ -548,30 +618,55 @@ MISSING_SYMBOL function write at tmp/tiny_http/src/util/sequential.rs:128
 MISSING_SYMBOL function flush at tmp/tiny_http/src/util/sequential.rs:137
 MISSING_SYMBOL function drop at tmp/tiny_http/src/util/sequential.rs:151
 MISSING_SYMBOL function drop at tmp/tiny_http/src/util/sequential.rs:171
-EXTRA_TARGET_SYMBOL property SequentialReader::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:8
-EXTRA_TARGET_SYMBOL property SequentialReaderBuilder::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:15
-EXTRA_TARGET_SYMBOL function SequentialReaderBuilder::build at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:17
-EXTRA_TARGET_SYMBOL function SequentialReaderBuilder::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:20
-EXTRA_TARGET_SYMBOL property SequentialWriter::writer at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:29
-EXTRA_TARGET_SYMBOL property SequentialWriterBuilder::writer at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:36
-EXTRA_TARGET_SYMBOL function SequentialWriterBuilder::build at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:38
-EXTRA_TARGET_SYMBOL function SequentialWriterBuilder::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:41
+EXTRA_TARGET_SYMBOL type SequentialReaderBuilderInner::First at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:5
+EXTRA_TARGET_SYMBOL property SequentialReaderBuilderInner::First::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:6
+EXTRA_TARGET_SYMBOL type SequentialReaderBuilderInner::NotFirst at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:9
+EXTRA_TARGET_SYMBOL property SequentialReaderBuilderInner::NotFirst::previous at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:10
+EXTRA_TARGET_SYMBOL type SequentialReaderInner::MyTurn at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:15
+EXTRA_TARGET_SYMBOL property SequentialReaderInner::MyTurn::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:16
+EXTRA_TARGET_SYMBOL type SequentialReaderInner::Waiting at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:19
+EXTRA_TARGET_SYMBOL property SequentialReaderInner::Waiting::previous at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:20
+EXTRA_TARGET_SYMBOL type SequentialReaderInner::Empty at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:23
+EXTRA_TARGET_SYMBOL property SequentialReader::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:30
+EXTRA_TARGET_SYMBOL function SequentialReader::read at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:32
+EXTRA_TARGET_SYMBOL function SequentialReader::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:34
+EXTRA_TARGET_SYMBOL property SequentialReaderBuilder::reader at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:41
+EXTRA_TARGET_SYMBOL function SequentialReaderBuilder::next at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:43
+EXTRA_TARGET_SYMBOL function SequentialReaderBuilder::build at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:45
+EXTRA_TARGET_SYMBOL function SequentialReaderBuilder::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:48
+EXTRA_TARGET_SYMBOL property SequentialWriter::writer at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:57
+EXTRA_TARGET_SYMBOL function SequentialWriter::write at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:59
+EXTRA_TARGET_SYMBOL function SequentialWriter::flush at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:61
+EXTRA_TARGET_SYMBOL function SequentialWriter::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:63
+EXTRA_TARGET_SYMBOL property SequentialWriterBuilder::writer at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:70
+EXTRA_TARGET_SYMBOL function SequentialWriterBuilder::next at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:72
+EXTRA_TARGET_SYMBOL function SequentialWriterBuilder::build at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:74
+EXTRA_TARGET_SYMBOL function SequentialWriterBuilder::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/Sequential.kt:77
 EXTRA_TARGET_SYMBOL type SequentialTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/SequentialTest.kt:7
 EXTRA_TARGET_SYMBOL function SequentialTest::testSequentialReader at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/SequentialTest.kt:8
 EXTRA_TARGET_SYMBOL function SequentialTest::testSequentialWriter at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/SequentialTest.kt:15
-PRESENT type TaskPool at tmp/tiny_http/src/util/task_pool.rs:11 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:11
-MISSING_SYMBOL type Sharing at tmp/tiny_http/src/util/task_pool.rs:15
+PRESENT type TaskPool at tmp/tiny_http/src/util/task_pool.rs:11 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:37
+PRESENT type Sharing at tmp/tiny_http/src/util/task_pool.rs:15 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:8
 MISSING_SYMBOL property MIN_THREADS at tmp/tiny_http/src/util/task_pool.rs:30
-MISSING_SYMBOL type Registration at tmp/tiny_http/src/util/task_pool.rs:32
+PRESENT type Registration at tmp/tiny_http/src/util/task_pool.rs:32 -> src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:13
 MISSING_SYMBOL function new at tmp/tiny_http/src/util/task_pool.rs:37
 MISSING_SYMBOL function drop at tmp/tiny_http/src/util/task_pool.rs:44
 MISSING_SYMBOL function new at tmp/tiny_http/src/util/task_pool.rs:50
 MISSING_SYMBOL function spawn at tmp/tiny_http/src/util/task_pool.rs:69
 MISSING_SYMBOL function add_thread at tmp/tiny_http/src/util/task_pool.rs:80
 MISSING_SYMBOL function drop at tmp/tiny_http/src/util/task_pool.rs:131
-EXTRA_TARGET_SYMBOL property TaskPool::scope at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:12
-EXTRA_TARGET_SYMBOL function TaskPool::spawn at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:17
-EXTRA_TARGET_SYMBOL function TaskPool::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:24
+EXTRA_TARGET_SYMBOL property Sharing::activeTasks at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:9
+EXTRA_TARGET_SYMBOL property Sharing::waitingTasks at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:10
+EXTRA_TARGET_SYMBOL property Registration::sharing at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:14
+EXTRA_TARGET_SYMBOL property Registration::active at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:15
+EXTRA_TARGET_SYMBOL function Registration::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:21
+EXTRA_TARGET_SYMBOL function Registration::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:26
+EXTRA_TARGET_SYMBOL property TaskPool::scope at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:38
+EXTRA_TARGET_SYMBOL property TaskPool::sharing at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:40
+EXTRA_TARGET_SYMBOL function TaskPool::spawn at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:46
+EXTRA_TARGET_SYMBOL function TaskPool::addThread at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:52
+EXTRA_TARGET_SYMBOL function TaskPool::drop at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:58
+EXTRA_TARGET_SYMBOL function TaskPool::Companion::new at src/commonMain/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPool.kt:63
 EXTRA_TARGET_SYMBOL type TaskPoolTest at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPoolTest.kt:7
 EXTRA_TARGET_SYMBOL function TaskPoolTest::testTaskPoolCreation at src/commonTest/kotlin/io/github/kotlinmania/tinyhttp/util/TaskPoolTest.kt:8
-Inventory totals: present=37, declaration_only=0, missing=266
+Inventory totals: present=43, declaration_only=0, missing=260

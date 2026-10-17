@@ -44,4 +44,31 @@ class RequestTest {
 
         assertTrue(res.isFailure)
     }
+
+    @Test
+    fun mustBeSend() {
+        val req =
+            Request
+                .newRequest(
+                    secure = false,
+                    method = Method.Get,
+                    path = "/index.html",
+                    version = HTTPVersion(1, 1),
+                    headers = emptyList(),
+                ).getOrThrow()
+
+        assertEquals(Method.Get, req.method)
+        assertEquals("/index.html", req.url())
+        assertEquals(HTTPVersion(1, 1), req.httpVersion)
+        assertFalse(req.secure)
+        assertTrue(req.headers.isEmpty())
+        assertEquals("Request(Get /index.html from null)", req.fmt())
+    }
+
+    @Test
+    fun testConvertWebSocketKey() {
+        // RFC 6455 test vector
+        val accept = Request.convertWebSocketKey("dGhlIHNhbXBsZSBub25jZQ==")
+        assertEquals("s3pPLMBiTxaQ9kYGzzhZRbK+xOo=", accept)
+    }
 }

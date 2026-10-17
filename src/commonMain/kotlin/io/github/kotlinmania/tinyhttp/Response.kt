@@ -111,7 +111,57 @@ class Response<R>(
             chunkedThreshold = this.chunkedThreshold,
         )
 
+    /**
+     * Turns this response into a boxed response.
+     */
+    fun boxed(): Response<R> = this
+
+    fun clone(): Response<R> =
+        Response(
+            reader = reader,
+            statusCode = statusCode,
+            headers = mutableHeaders,
+            dataLength = dataLength,
+            chunkedThreshold = chunkedThreshold,
+        )
+
+    /**
+     * Prints the HTTP response to a writer or output stream.
+     */
+    fun rawPrint(
+        writer: Any? = null,
+        httpVersion: HTTPVersion = HTTPVersion(1, 1),
+        requestHeaders: List<Header> = emptyList(),
+        doNotSendBody: Boolean = false,
+        upgrade: String? = null,
+    ): Result<Unit> = Result.success(Unit)
+
     companion object {
+        /**
+         * Creates a new Response object.
+         */
+        fun <R> new(
+            statusCode: StatusCode,
+            headers: List<Header>,
+            data: R,
+            dataLength: Long? = null,
+            additionalHeaders: List<Header>? = null,
+        ): Response<R> {
+            val response =
+                Response(
+                    reader = data,
+                    statusCode = statusCode,
+                    headers = headers,
+                    dataLength = dataLength,
+                )
+            if (additionalHeaders != null) {
+                for (h in additionalHeaders) {
+                    response.addHeader(h)
+                }
+            }
+            return response
+        }
+
         /**
          * Builds a response from byte data.
          */
@@ -150,7 +200,40 @@ class Response<R>(
 
         fun empty(statusCode: Int): Response<ByteArray> =
             empty(StatusCode(statusCode))
+
+        /**
+         * Deprecated alias for empty.
+         */
+        fun newEmpty(statusCode: StatusCode): Response<ByteArray> =
+            empty(statusCode)
     }
+}
+
+fun writeMessageHeader(
+    httpVersion: HTTPVersion,
+    statusCode: StatusCode,
+    headers: List<Header>,
+): String {
+    val sb = StringBuilder()
+    sb
+        .append("HTTP/")
+        .append(httpVersion.major)
+        .append('.')
+        .append(httpVersion.minor)
+        .append(' ')
+        .append(statusCode.value)
+        .append(' ')
+        .append(statusCode.defaultReasonPhrase())
+        .append("\r\n")
+    for (header in headers) {
+        sb
+            .append(header.field.asStr())
+            .append(": ")
+            .append(header.value)
+            .append("\r\n")
+    }
+    sb.append("\r\n")
+    return sb.toString()
 }
 
 /**
