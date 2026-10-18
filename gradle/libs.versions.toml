@@ -10,7 +10,7 @@ detekt = "1.23.8"
 ktlint = "14.2.0"
 kotlinxBenchmark = "0.5.0"
 log = "0.1.4"
-zeroize = "0.1.0"
+zeroize = "0.1.1"
 sha1 = "0.1.2"
 
 [plugins]
