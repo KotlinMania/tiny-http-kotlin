@@ -15,7 +15,6 @@ class StatusCode(
             101 -> "Switching Protocols"
             102 -> "Processing"
             103 -> "Early Hints"
-
             200 -> "OK"
             201 -> "Created"
             202 -> "Accepted"
@@ -26,7 +25,6 @@ class StatusCode(
             207 -> "Multi-Status"
             208 -> "Already Reported"
             226 -> "IM Used"
-
             300 -> "Multiple Choices"
             301 -> "Moved Permanently"
             302 -> "Found"
@@ -35,7 +33,6 @@ class StatusCode(
             305 -> "Use Proxy"
             307 -> "Temporary Redirect"
             308 -> "Permanent Redirect"
-
             400 -> "Bad Request"
             401 -> "Unauthorized"
             402 -> "Payment Required"
@@ -63,7 +60,6 @@ class StatusCode(
             429 -> "Too Many Requests"
             431 -> "Request Header Fields Too Large"
             451 -> "Unavailable For Legal Reasons"
-
             500 -> "Internal Server Error"
             501 -> "Not " + "Implemented"
             502 -> "Bad Gateway"
@@ -259,15 +255,42 @@ sealed class Method {
         fun parse(s: String): Result<Method> =
             Result.success(
                 when (s) {
-                    "GET" -> Get
-                    "HEAD" -> Head
-                    "POST" -> Post
-                    "PUT" -> Put
-                    "DELETE" -> Delete
-                    "CONNECT" -> Connect
-                    "OPTIONS" -> Options
-                    "TRACE" -> Trace
-                    "PATCH" -> Patch
+                    "GET" -> {
+                        Get
+                    }
+
+                    "HEAD" -> {
+                        Head
+                    }
+
+                    "POST" -> {
+                        Post
+                    }
+
+                    "PUT" -> {
+                        Put
+                    }
+
+                    "DELETE" -> {
+                        Delete
+                    }
+
+                    "CONNECT" -> {
+                        Connect
+                    }
+
+                    "OPTIONS" -> {
+                        Options
+                    }
+
+                    "TRACE" -> {
+                        Trace
+                    }
+
+                    "PATCH" -> {
+                        Patch
+                    }
+
                     else -> {
                         val ascii =
                             asciiStringFromBytes(s.encodeToByteArray())

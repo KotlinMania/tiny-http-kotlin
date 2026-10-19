@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftTestHarness",
-    platforms: [.macOS(.v15)],
+    platforms: [.macOS("15.0")],
     dependencies: [
         .package(name: "TinyHttp", path: "../build/SPMPackage/macosArm64/Debug")
     ],

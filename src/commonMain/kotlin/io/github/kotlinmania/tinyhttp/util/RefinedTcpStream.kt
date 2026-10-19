@@ -22,7 +22,10 @@ sealed class Stream {
                 val conn = (connection as? Connection)?.tryClone() ?: connection
                 Http(conn)
             }
-            is Https -> Https(secureStream)
+
+            is Https -> {
+                Https(secureStream)
+            }
         }
 
     fun secure(): Boolean =
